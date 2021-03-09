@@ -18,11 +18,11 @@ class _HomePageState extends State<HomePage> {
         title: Text('Are you sure?'),
         content: Text('Do you want to exit the App'),
         actions: [
-          FlatButton(
+          TextButton(
             onPressed: () => _launchInApp(),
             child: Text('No'),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () => exit(0),
             child: Text('Yes'),
           ),
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void> _launchInApp() {
+  void _launchInApp() {
     if (canLaunch(_website) != null) {
       launch(
         _website,
@@ -48,14 +48,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () async => await onWillPop(),
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: () async => await onWillPop(),
+          ),
         ),
+        body: Center(child: Text("Home Page")),
       ),
-      body: Center(child: Text("Home Page")),
     );
   }
 }
