@@ -1,4 +1,4 @@
-# flutter_app
+# Splash Screen Freeze Google Group Issue
 
 A new Flutter application.
 
