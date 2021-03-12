@@ -19,7 +19,10 @@ class _HomePageState extends State<HomePage> {
         content: Text('Do you want to exit the App'),
         actions: [
           TextButton(
-            onPressed: () => _launchInApp(),
+            onPressed: () async {
+              await _launchInApp();
+              exit(0);
+            },
             child: Text('No'),
           ),
           TextButton(
